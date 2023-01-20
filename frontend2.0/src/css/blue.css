@@ -1,0 +1,32 @@
+
+.header-bg{
+    background: #00204a; 
+    border-color: #00204a;
+}
+
+.btn.btn-primary {
+    background: #005792; 
+    border-color: #005792;
+}
+
+
+.btn.btn-primary.active.focus,
+.btn.btn-primary.active:focus,
+.btn.btn-primary.active,
+.btn.btn-primary:active
+ {
+    background: #53a8b6; 
+    border-color: #53a8b6;
+}
+
+.btn.btn-primary:hover, 
+.btn.btn-primary.active:hover{
+    background: #79c2d0; 
+    border-color: #79c2d0;
+}
+
+.content-main{
+    background: #00bbf0; 
+   
+}
+	
