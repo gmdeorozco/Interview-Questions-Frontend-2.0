@@ -21,22 +21,26 @@ function App() {
     
     <Router history={newHistory} >
       
-      <Container  >
-            <Header />
-      <NavBar />
-      <div>
-        <Switch className="content-main vh-75">
+      <Container className="vh-100 content-main shadow shadow-3"   >
+          <Header />
+          <NavBar />
+
+ 
+        <Switch >
+       
           <Route
             exact
             path="/topics"
             render={() => (
-              <React.Fragment>
-                <NewTopicForm />
-                <TopicsTable />
-                
+              <React.Fragment  >
+                <Container >
+                  <Row className="d-flex justify-content-center"><NewTopicForm /></Row> 
+                  <Row className="d-flex justify-content-center"><TopicsTable /></Row> 
+                </Container>
               </React.Fragment>
             )}
           />
+         
           <Route exact path="/sources" 
             render={() => (
               <React.Fragment>
@@ -46,6 +50,7 @@ function App() {
               </React.Fragment>
             )}
             />
+           
           <Route exact path="/questions" 
             render={() => (
               <React.Fragment>
@@ -55,9 +60,11 @@ function App() {
               </React.Fragment>
             )}
             />
+            
           <Redirect to="/topics" />
         </Switch>
-        </div>
+        
+       
       </Container>
     </Router>
   );
