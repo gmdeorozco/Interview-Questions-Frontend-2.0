@@ -6,8 +6,8 @@ function NewTopicForm(){
          
             <Form className="bg-white text-center
                     border border-white 
-                    border-2 m-5 
-                    p-3 w-75 rounded rounded-3 shadow">
+                    border-2 m-5 mb-2
+                    p-3 w-50 rounded rounded-3 shadow">
                         
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     
