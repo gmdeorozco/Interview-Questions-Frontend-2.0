@@ -9,7 +9,7 @@ function SourceTable(){
 
         <Card.Header className="bg-light"> Sources Table  </Card.Header>
         <Card.Body className="d-flex justify-content-center 
-     text-center p-5 pt-2
+          text-center p-5 
       ">
       <Container>
             

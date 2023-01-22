@@ -1,12 +1,13 @@
-import { Row, Table, Button, Pagination, Container, Card } from "react-bootstrap";
+import { Row, Table, Pagination, Container, Card } from "react-bootstrap";
 import { AiFillEdit, AiFillDelete, AiFillQuestionCircle } from "react-icons/ai"
 import { FaBookReader } from "react-icons/fa"
 
 function TopicTable(){
     return(
-      <Card className = "w-75 bg-primary border border-white m-5 mt-4 mb-2 p-0">
+      <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
 
         <Card.Header className="bg-light"> Topics Table  </Card.Header>
+
         <Card.Body className="d-flex justify-content-center 
      text-center p-5
       ">
@@ -32,35 +33,33 @@ function TopicTable(){
                 size="sm" className="table-danger w-100">
                 <thead>
                   <tr>
+
                     <th>#</th>
                     <th>Topic</th> 
-                    <th className = 'col-3'>Show</th>
-                    <th className = 'col-3'>Action</th>
+                    <th>Show</th>
+                    <th>Action</th>
+
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr className="align-middle">
                     <td>1</td>
                     <td>Mark</td>
-                    <td className ="d-flex justify-content-evenly"> 
-                      <Button className="btn btn-outline-white bg-warning"> <h4>< FaBookReader /> </h4> </Button>
-                      <Button className="btn btn-outline-white bg-warning"><h4><AiFillQuestionCircle /></h4></Button></td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
-                    
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
-                    
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Larry the Bird</td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
 
+                    <td  > 
+                      <div className="d-flex justify-content-around">
+                        <h3> <FaBookReader /> </h3>
+                        <h3> <AiFillQuestionCircle /> </h3>
+                      </div>
+                    </td>
+
+                    <td  >
+                      <div className="d-flex justify-content-around">
+                        <h3> <AiFillEdit /> </h3>
+                        <h3> <AiFillDelete /> </h3>
+                      </div>
+                    </td>
+                    
                   </tr>
                 </tbody>
              

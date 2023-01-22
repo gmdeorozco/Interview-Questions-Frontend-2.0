@@ -28,7 +28,7 @@ function App() {
           <NavBar />
 
  
-        <Switch >
+      <Switch >
        
           <Route
             exact

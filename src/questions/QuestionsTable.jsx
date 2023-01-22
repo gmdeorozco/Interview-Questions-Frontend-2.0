@@ -1,6 +1,5 @@
-import { Row, Table, Button, Pagination, Container, Card } from "react-bootstrap";
-import { AiFillEdit, AiFillDelete, AiFillQuestionCircle, AiOutlineLink } from "react-icons/ai"
-import { FaBookReader } from "react-icons/fa"
+import { Row, Table, Pagination, Container, Card } from "react-bootstrap";
+import { AiFillEdit, AiFillDelete, AiOutlineLink } from "react-icons/ai"
 import { SiTarget } from "react-icons/si"
 
 function QuestionsTable(){
@@ -75,14 +74,14 @@ function QuestionsTable(){
             </Row>
 
               <Pagination size="sm" className="justify-content-center" >
-              <Pagination.Item active={false}> {"<<"} </Pagination.Item>
-              <Pagination.Item active={false}> {"<"} </Pagination.Item>
-              <Pagination.Item active={false}> {1} </Pagination.Item>
-              <Pagination.Item active={true}> {2} </Pagination.Item>
-              <Pagination.Item active={false}> {3} </Pagination.Item>
-              <Pagination.Item active={false}> {">"} </Pagination.Item>
-              <Pagination.Item active={false}> {">>"} </Pagination.Item>
-            </Pagination>
+                <Pagination.Item active={false}> {"<<"} </Pagination.Item>
+                <Pagination.Item active={false}> {"<"} </Pagination.Item>
+                <Pagination.Item active={false}> {1} </Pagination.Item>
+                <Pagination.Item active={true}> {2} </Pagination.Item>
+                <Pagination.Item active={false}> {3} </Pagination.Item>
+                <Pagination.Item active={false}> {">"} </Pagination.Item>
+                <Pagination.Item active={false}> {">>"} </Pagination.Item>
+              </Pagination>
 
             <Row className="m-3 justify-content-center"> 1 - 3 / 100 sources </Row>
             
