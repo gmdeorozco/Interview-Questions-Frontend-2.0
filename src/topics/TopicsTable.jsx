@@ -1,17 +1,20 @@
-import { Row, Table, Button, Pagination } from "react-bootstrap";
+import { Row, Table, Button, Pagination, Container, Card } from "react-bootstrap";
 import { AiFillEdit, AiFillDelete, AiFillQuestionCircle } from "react-icons/ai"
 import { FaBookReader } from "react-icons/fa"
 
 function TopicTable(){
     return(
-        <div className="bg-white 
-            border border-black 
-            border-2 m-5 mt-5 p-3 w-75 
-            rounded rounded-3 shadow text-center">
-                
-            <h1> Topics Table</h1>
-            
-            <Pagination size="sm" className="justify-content-center " >
+      <Card className = "w-75 bg-primary border border-white m-5 mt-4 mb-2 p-0">
+
+        <Card.Header className="bg-light"> Topics Table  </Card.Header>
+        <Card.Body className="d-flex justify-content-center 
+     text-center p-5
+      ">
+        <Container >      
+          <Row className="text-center"><h2>Topics Table</h2> </Row>
+
+          <Row>
+            <Pagination size="sm" className=" justify-content-center " >
               <Pagination.Item active={false}> {"<<"} </Pagination.Item>
               <Pagination.Item active={false}> {"<"} </Pagination.Item>
               <Pagination.Item active={false}> {1} </Pagination.Item>
@@ -20,9 +23,13 @@ function TopicTable(){
               <Pagination.Item active={false}> {">"} </Pagination.Item>
               <Pagination.Item active={false}> {">>"} </Pagination.Item>
             </Pagination>
-            <div className="m-3"> 1 - 10 / 100 topics </div>
+          </Row>
 
-              <Table striped bordered hover size="sm" className="shadow shadow-2 border-3">
+           
+
+             <Row className="justify-content-center"> 
+              <Table  striped bordered hover 
+                size="sm" className="table-danger w-100">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -35,7 +42,9 @@ function TopicTable(){
                   <tr>
                     <td>1</td>
                     <td>Mark</td>
-                    <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
+                    <td className ="d-flex justify-content-evenly"> 
+                      <Button className="btn btn-outline-white bg-warning"> <h4>< FaBookReader /> </h4> </Button>
+                      <Button className="btn btn-outline-white bg-warning"><h4><AiFillQuestionCircle /></h4></Button></td>
                     <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
                     
                   </tr>
@@ -54,7 +63,9 @@ function TopicTable(){
 
                   </tr>
                 </tbody>
-              </Table>
+             
+              </Table> 
+            </Row>
 
               <Pagination size="sm" className="justify-content-center" >
               <Pagination.Item active={false}> {"<<"} </Pagination.Item>
@@ -65,8 +76,12 @@ function TopicTable(){
               <Pagination.Item active={false}> {">"} </Pagination.Item>
               <Pagination.Item active={false}> {">>"} </Pagination.Item>
             </Pagination>
+
+            <Row className="m-3 justify-content-center"> 1 - 3 / 100 topics </Row>
             
-        </div>
+        </Container>
+        </ Card.Body>
+        </Card>
     );
 }
 export default TopicTable;

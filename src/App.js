@@ -13,6 +13,8 @@ import QuestionsTable from './questions/QuestionsTable'
 import { Col, Container, Row } from 'react-bootstrap';
 import './css/blue.css'
 
+import 'bootswatch/dist/darkly/bootstrap.min.css';
+
 function App() {
 
   const newHistory = createBrowserHistory();
@@ -21,7 +23,7 @@ function App() {
     
     <Router history={newHistory} >
       
-      <Container className="vh-100 content-main shadow shadow-3"   >
+      <Container className=" shadow shadow-3"   >
           <Header />
           <NavBar />
 
@@ -44,8 +46,15 @@ function App() {
           <Route exact path="/sources" 
             render={() => (
               <React.Fragment>
-                <NewSourceForm />
-                <SourcesTable />
+                <Container >
+                  <Row className="d-flex justify-content-center">
+                    <NewSourceForm />
+                  </Row>
+                  <Row className="d-flex justify-content-center">
+                    <SourcesTable />
+                  </Row>
+                </Container>
+                
                 
               </React.Fragment>
             )}
@@ -54,9 +63,12 @@ function App() {
           <Route exact path="/questions" 
             render={() => (
               <React.Fragment>
+              <Row className="d-flex justify-content-center">
                 <NewQuestionForm />
+              </Row>
+              <Row className="d-flex justify-content-center">
                 <QuestionsTable />
-                
+              </Row>
               </React.Fragment>
             )}
             />
