@@ -1,6 +1,7 @@
-import { Row, Table, Pagination, Container, Card } from "react-bootstrap";
+import { Row, Table, Pagination, Container, Card, Form, InputGroup} from "react-bootstrap";
 import { AiFillEdit, AiFillDelete, AiOutlineLink } from "react-icons/ai"
 import { SiTarget } from "react-icons/si"
+import { TopicsListSelect } from "../topics";
 
 function QuestionsTable(){
     return(
@@ -25,9 +26,21 @@ function QuestionsTable(){
         </Pagination>
         </Row>
 
-        
+        <Row className="text-center w-100 ">
+          <Form>            
+            <Form.Group className="mb-3 " controlId="formBasicTopic">
+              <InputGroup >
+                
+                  <InputGroup.Text> Search: </InputGroup.Text>
+                  <Form.Control type="text" placeholder="Enter search words" />
+                  <TopicsListSelect />
+                
+              </InputGroup>
+            </Form.Group>
+          </Form>
+        </Row>
 
-          <Row className="justify-content-center"> 
+        <Row className="justify-content-center"> 
           <Table  striped bordered hover 
             size="sm" className="table-danger w-100">
             <thead>

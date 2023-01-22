@@ -1,35 +1,26 @@
-import { Router,Route,Switch, Redirect } from 'react-router-dom'
-import NewTopicForm from './topics/NewTopicForm';
-import NavBar from './NavBar'
 import React from 'react';
-import TopicsTable from './topics/TopicsTable';
-import { createBrowserHistory } from 'history'
-import NewSourceForm from './sources/NewSourceForm';
-import SourcesTable from './sources/SourcesTable'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './Header'
-import NewQuestionForm from './questions/NewQuestionForm'
-import QuestionsTable from './questions/QuestionsTable'
-import { Col, Container, Row } from 'react-bootstrap';
-import './css/blue.css'
+import { Router,Route,Switch, Redirect } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Container, Row } from 'react-bootstrap';
+
+import { Header, NavBar } from './headers';
+import { NewQuestionForm, QuestionsTable } from './questions';
+import { NewSourceForm, SourcesTable } from './sources';
+import { NewTopicForm, TopicsTable } from './topics'
 
 import 'bootswatch/dist/darkly/bootstrap.min.css';
+
 
 function App() {
 
   const newHistory = createBrowserHistory();
 
   return (
-    
     <Router history={newHistory} >
-      
-      <Container className=" shadow shadow-3"   >
-          <Header />
-          <NavBar />
-
- 
-      <Switch >
-       
+      <Container className="shadow shadow-3">
+        <Header />
+        <NavBar />
+        <Switch >
           <Route
             exact
             path="/topics"
@@ -54,11 +45,9 @@ function App() {
                     <SourcesTable />
                   </Row>
                 </Container>
-                
-                
               </React.Fragment>
             )}
-            />
+          />
            
           <Route exact path="/questions" 
             render={() => (
@@ -71,12 +60,10 @@ function App() {
               </Row>
               </React.Fragment>
             )}
-            />
+          />
             
           <Redirect to="/topics" />
         </Switch>
-        
-       
       </Container>
     </Router>
   );

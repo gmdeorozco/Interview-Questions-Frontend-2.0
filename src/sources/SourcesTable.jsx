@@ -1,6 +1,6 @@
-import { Row, Table, Button, Pagination, Container, Card } from "react-bootstrap";
+import { Row, Table, Pagination, Container, Card, Form, InputGroup } from "react-bootstrap";
 import { AiFillEdit, AiFillDelete, AiFillQuestionCircle, AiOutlineLink } from "react-icons/ai"
-import { FaBookReader } from "react-icons/fa"
+import { TopicsListSelect } from "../topics";
 
 function SourceTable(){
     return(
@@ -15,20 +15,32 @@ function SourceTable(){
             
         <Row className="text-center"><h2>Sources Table</h2> </Row>
         <Row>
-        <Pagination size="sm" className=" justify-content-center " >
-          <Pagination.Item active={false}> {"<<"} </Pagination.Item>
-          <Pagination.Item active={false}> {"<"} </Pagination.Item>
-          <Pagination.Item active={false}> {1} </Pagination.Item>
-          <Pagination.Item active={true}> {2} </Pagination.Item>
-          <Pagination.Item active={false}> {3} </Pagination.Item>
-          <Pagination.Item active={false}> {">"} </Pagination.Item>
-          <Pagination.Item active={false}> {">>"} </Pagination.Item>
-        </Pagination>
+          <Pagination size="sm" className=" justify-content-center " >
+            <Pagination.Item active={false}> {"<<"} </Pagination.Item>
+            <Pagination.Item active={false}> {"<"} </Pagination.Item>
+            <Pagination.Item active={false}> {1} </Pagination.Item>
+            <Pagination.Item active={true}> {2} </Pagination.Item>
+            <Pagination.Item active={false}> {3} </Pagination.Item>
+            <Pagination.Item active={false}> {">"} </Pagination.Item>
+            <Pagination.Item active={false}> {">>"} </Pagination.Item>
+          </Pagination>
         </Row>
 
-        
+        <Row className="text-center w-100 ">
+          <Form>            
+            <Form.Group className="mb-3 " controlId="formBasicTopic">
+              <InputGroup >
+                
+                  <InputGroup.Text> Search: </InputGroup.Text>
+                  <Form.Control type="text" placeholder="Enter search words" /> <TopicsListSelect />
+                  
+                
+              </InputGroup>
+            </Form.Group>
+          </Form>
+        </Row>
 
-          <Row className="justify-content-center"> 
+        <Row className="justify-content-center"> 
           <Table  striped bordered hover 
             size="sm" className="table-danger w-100">
             <thead>
@@ -47,7 +59,7 @@ function SourceTable(){
                 <td>Java</td>
                 <td>W3.org Java Tutorial</td>
                 <td > <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
+                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillQuestionCircle /></h3></td>
                 <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
                 
               </tr>
@@ -56,7 +68,7 @@ function SourceTable(){
               <td>Java</td>
                 <td> W3 org Java Tutorial </td>
                 <td> <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
+                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillQuestionCircle /></h3></td>
                 <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
                 
               </tr>
@@ -65,30 +77,31 @@ function SourceTable(){
               <td>Java</td>
                 <td>W3.org Java Tutorial</td>
                 <td> <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> < FaBookReader /> <AiFillQuestionCircle /></h3></td>
+                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillQuestionCircle /></h3></td>
                 <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
 
               </tr>
             </tbody>
              
-              </Table> 
-            </Row>
+          </Table> 
+        </Row>
+        <Row>
+          <Pagination size="sm" className="justify-content-center" >
+            <Pagination.Item active={false}> {"<<"} </Pagination.Item>
+            <Pagination.Item active={false}> {"<"} </Pagination.Item>
+            <Pagination.Item active={false}> {1} </Pagination.Item>
+            <Pagination.Item active={true}> {2} </Pagination.Item>
+            <Pagination.Item active={false}> {3} </Pagination.Item>
+            <Pagination.Item active={false}> {">"} </Pagination.Item>
+            <Pagination.Item active={false}> {">>"} </Pagination.Item>
+          </Pagination>
+        </Row>
 
-              <Pagination size="sm" className="justify-content-center" >
-              <Pagination.Item active={false}> {"<<"} </Pagination.Item>
-              <Pagination.Item active={false}> {"<"} </Pagination.Item>
-              <Pagination.Item active={false}> {1} </Pagination.Item>
-              <Pagination.Item active={true}> {2} </Pagination.Item>
-              <Pagination.Item active={false}> {3} </Pagination.Item>
-              <Pagination.Item active={false}> {">"} </Pagination.Item>
-              <Pagination.Item active={false}> {">>"} </Pagination.Item>
-            </Pagination>
-
-            <Row className="m-3 justify-content-center"> 1 - 3 / 100 sources </Row>
+        <Row className="m-3 justify-content-center"> 1 - 3 / 100 sources </Row>
             
-        </Container>
-        </ Card.Body>
-        </Card>
+      </Container>
+    </ Card.Body>
+  </Card>
     )
 }
 export default SourceTable;

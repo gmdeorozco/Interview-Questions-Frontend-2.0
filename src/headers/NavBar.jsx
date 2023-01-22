@@ -1,6 +1,5 @@
 import { Button, Row, ButtonGroup }  from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
-import './css/blue.css'
 
 function NavBar(){
   return(

@@ -1,6 +1,8 @@
 import { Form, Button, InputGroup, FloatingLabel, Card } from "react-bootstrap";
 import { BsPlusLg } from "react-icons/bs"
 import { useState } from "react";
+import { TopicsListSelect } from "../topics";
+import { SourcesListSelect } from "../sources";
 
 function NewQuestionForm(){
   
@@ -32,23 +34,11 @@ function NewQuestionForm(){
                <Form.Group className="mb-3" controlId="formBasicQuestion">
 
                   <InputGroup className="mb-3">
-                    <InputGroup.Text>Topic:</InputGroup.Text>
-                      <Form.Select>
-                        <option value={1} > Java </option>
-                        <option value={2} > Git </option>
-                      </Form.Select>
-                    </InputGroup>
-
+                    <TopicsListSelect />  
+                    <SourcesListSelect />
+                  </InputGroup>
                   <InputGroup className="mb-3">
-                    <InputGroup.Text>Source:</InputGroup.Text>
-                      <Form.Select>
-                        <option value={1} > W3 Org Java Course </option>
-                        <option value={2} > JavaTcurses Interview Questions </option>
-                      </Form.Select>
-                    </InputGroup>
-
-                  <InputGroup className="mb-3">
-                    <InputGroup.Text>Question:</InputGroup.Text>
+                  <InputGroup.Text>Question:</InputGroup.Text>
                     <Form.Control type="text" placeholder="Enter question" />
                   </InputGroup>
 

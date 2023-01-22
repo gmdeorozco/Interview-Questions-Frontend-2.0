@@ -1,6 +1,7 @@
 import { Form, Button, InputGroup, Card } from "react-bootstrap";
 import { BsPlusLg } from "react-icons/bs"
 import { useState } from "react";
+import { TopicsListSelect } from "../topics";
 
 function NewSourceForm(){
     const [ show, setShow ] = useState( false );
@@ -28,22 +29,14 @@ function NewSourceForm(){
 
          <Form >
                        
-               <Form.Group className="mb-3" controlId="formBasicSource">
-                  <InputGroup className="mb-3">
-                  <InputGroup.Text>Source name:</InputGroup.Text>
-                  <Form.Control type="text" placeholder="Enter source name" />
-                  </InputGroup>
+          <Form.Group className="mb-3" controlId="formBasicSource">
+            <InputGroup className="mb-3">
+              <InputGroup.Text>Source name:</InputGroup.Text>
+              <Form.Control type="text" placeholder="Enter source name" />
+              <TopicsListSelect />
+            </InputGroup>
 
-                  <InputGroup className="mb-3">
-                  <InputGroup.Text>Topic:</InputGroup.Text>
-                   <Form.Select>
-                    <option value={1} > Java </option>
-                    <option value={2} > Git </option>
-                   </Form.Select>
-
-                   </InputGroup>
-
-               </Form.Group>
+          </Form.Group>
 
                <Button variant="success" type="submit">
                    Add a New Source

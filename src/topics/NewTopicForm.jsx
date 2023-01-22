@@ -18,17 +18,12 @@ function NewTopicForm(){
       
     }
 
-    return(<>
-
-        
-        
-        <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
-          <Card.Header className="bg-light">  New Topic  </Card.Header>
-          
-          <Card.Body className="d-flex justify-content-center
-         text-center p-3
-          ">
-      
+  return(
+    <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
+      <Card.Header className="bg-light">  New Topic  </Card.Header>        
+        <Card.Body className="d-flex justify-content-center
+          text-center p-3"
+        >
 
           <Form >            
             <Form.Group className="mb-3" controlId="formBasicTopic">
@@ -46,15 +41,10 @@ function NewTopicForm(){
             >
               Hide
             </Button>
-              
           </Form>
      
-          </Card.Body>
-        </Card>
-        
-         
-            
-         </>
+        </Card.Body>
+      </Card>
         
     );
 }
