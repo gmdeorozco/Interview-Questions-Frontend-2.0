@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import { Container, Row } from 'react-bootstrap';
 
 import { Header, NavBar } from './headers';
-import { NewQuestionForm, QuestionsTable } from './questions';
+import { NewQuestionForm, QuestionDeleteConfirm, QuestionsTable, QuestionView } from './questions';
 import { NewSourceForm, SourcesTable } from './sources';
 import { NewTopicForm, TopicsTable } from './topics'
 
@@ -14,9 +14,11 @@ import 'bootswatch/dist/darkly/bootstrap.min.css';
 function App() {
 
   const newHistory = createBrowserHistory();
+  console.log("printing")
 
   return (
     <Router history={newHistory} >
+      
       <Container className="shadow shadow-3">
         <Header />
         <NavBar />
@@ -61,8 +63,26 @@ function App() {
               </React.Fragment>
             )}
           />
+
+          <Route exact path="/questions/:id"
+            render={() => (
+              <React.Fragment>
+                <Row className="d-flex justify-content-center">
+                  <QuestionView />
+                </Row>
+              </React.Fragment>
+            )} />
+          
+          <Route exact path="/questions/:id/delete"
+            render={() => (
+              <React.Fragment>
+                <Row className="d-flex justify-content-center">
+                  <QuestionDeleteConfirm />
+                </Row>
+              </React.Fragment>
+            )} />
             
-          <Redirect to="/topics" />
+          <Redirect to="/questions" />
         </Switch>
       </Container>
     </Router>

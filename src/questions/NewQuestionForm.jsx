@@ -23,8 +23,8 @@ function NewQuestionForm(){
   return(
 
         
-      <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
-      <Card.Header className="bg-light">  New Quetion  </Card.Header>
+    <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
+      <Card.Header className="bg-light">  New Question  </Card.Header>
       <Card.Body className="d-flex justify-content-center
      text-center p-3
       ">

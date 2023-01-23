@@ -2,6 +2,7 @@ import { Row, Table, Pagination, Container, Card, Form, InputGroup} from "react-
 import { AiFillEdit, AiFillDelete, AiOutlineLink } from "react-icons/ai"
 import { SiTarget } from "react-icons/si"
 import { TopicsListSelect } from "../topics";
+import { SourcesListSelect } from "../sources"
 
 function QuestionsTable(){
     return(
@@ -29,12 +30,13 @@ function QuestionsTable(){
         <Row className="text-center w-100 ">
           <Form>            
             <Form.Group className="mb-3 " controlId="formBasicTopic">
-              <InputGroup >
-                
-                  <InputGroup.Text> Search: </InputGroup.Text>
-                  <Form.Control type="text" placeholder="Enter search words" />
+              <InputGroup className="mb-3">
                   <TopicsListSelect />
-                
+                  <SourcesListSelect />
+              </InputGroup>
+              <InputGroup>
+                <InputGroup.Text> Search: </InputGroup.Text>
+                <Form.Control type="text" placeholder="Enter search words" />
               </InputGroup>
             </Form.Group>
           </Form>
@@ -48,7 +50,7 @@ function QuestionsTable(){
                 <th>#</th>
                 <th>Topic</th> 
                 <th>Source</th> 
-                <th>Link</th> 
+                <th>SourceLink</th> 
                 <th className = 'col-3'>Show</th>
                 <th className = 'col-3'>Action</th>
               </tr>
