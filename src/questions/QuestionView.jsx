@@ -1,15 +1,60 @@
-import { Button, Card, Col, Container, Row, ListGroup } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, ListGroup, Spinner } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { BsBackspaceFill } from "react-icons/bs"
 import { MdModeEditOutline } from "react-icons/md"
 import { LinkContainer } from "react-router-bootstrap";
 import { AiFillDelete } from "react-icons/ai"
+import { useGetQuestionQuery } from "../api/questionsSlice";
+
 
 import React from "react";
 
-function QuestionView(){
+export const QuestionView = ( { match }) => {
     
-  let { id } = useParams();
+ 
+  const { questionId } = match.params;
+  const { data: data, isFetching, isSuccess } = useGetQuestionQuery( questionId );
+
+  let content
+  if (isFetching) {
+    content = <Spinner text="Loading..." />
+  } else if (isSuccess) {
+      let question = data._embedded.questionModelList;
+    content = (
+      
+      <Row>
+          <p className="bg-primary p-2 rounded rounded-2">{ question.question }</p>
+          
+          <hr></hr>
+          <ListGroup className="mb-3">
+            <ListGroup.Item>
+              
+                <p> Question id : { question.id } </p>
+              
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+              <LinkContainer to="/topics"  > 
+                <Button className="btn btn-outline-light" >  
+                Topic : { question.topic } 
+                </Button>
+              </LinkContainer>
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+              <LinkContainer to="/sources"  > 
+                <Button className="btn btn-outline-light" >  
+                  Source : { question.source.name }
+                </Button>
+              </LinkContainer>
+            </ListGroup.Item>
+
+          </ListGroup>
+        </Row>
+
+    )
+  }
+  
   const navigate = useNavigate();
 
 
@@ -22,35 +67,7 @@ function QuestionView(){
       ">
       <Container>
 
-        <Row>
-          <p className="bg-primary p-2 rounded rounded-2">Java is a general purpose language.</p>
-          
-          <hr></hr>
-          <ListGroup className="mb-3">
-            <ListGroup.Item>
-              
-                <p> Question id : { id } </p>
-              
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <LinkContainer to="/topics"  > 
-                <Button className="btn btn-outline-light" >  
-                Topic : Java 
-                </Button>
-              </LinkContainer>
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              <LinkContainer to="/sources"  > 
-                <Button className="btn btn-outline-light" >  
-                  Source : W3.org Java Tutorial 
-                </Button>
-              </LinkContainer>
-            </ListGroup.Item>
-
-          </ListGroup>
-        </Row>
+        { content }
         <Row >
           <Col className="d-flex justify-content-end">
             
@@ -58,7 +75,7 @@ function QuestionView(){
               onClick={ () => navigate(-1) } > 
             <BsBackspaceFill />  Back </Button>
             <Button className = "btn btn-warning"> <MdModeEditOutline />  Edit </Button>
-            <LinkContainer to={`/questions/${id}/delete`} >
+            <LinkContainer to={`/questions/${questionId}/delete`} >
               <Button className = "btn btn-danger"> <AiFillDelete />  Delete </Button>
             </LinkContainer>
             
@@ -69,4 +86,3 @@ function QuestionView(){
       </Card>
     )
 }
-export default QuestionView;

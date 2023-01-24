@@ -1,12 +1,59 @@
-import { Row, Table, Pagination, Container, Card, Form, InputGroup} from "react-bootstrap";
+import { Row, Table, Pagination, Container, Card, Form, InputGroup, Spinner } from "react-bootstrap";
 import { AiFillEdit, AiFillDelete, AiOutlineLink } from "react-icons/ai"
 import { SiTarget } from "react-icons/si"
 import { TopicsListSelect } from "../topics";
 import { SourcesListSelect } from "../sources"
+import { useGetQuestionsQuery } from "../api/questionsSlice";
+import { Link } from "react-router-dom";
 
-function QuestionsTable(){
+  let PostExcerpt = ({ question }) => {
+
+    return (
+     
+      <tr>
+        <td>{ question.id }</td>
+        <td>{ question.topic }</td>
+        <td>{ question.source.name }</td>
+        <td > <h3><a href={ question.source.sourceLink }><AiOutlineLink /></a></h3></td>
+        <td > <b>{ question.question }</b></td>
+        <td> <h3 className ="d-flex justify-content-evenly"> <Link to={ `/questions/${question.id}` }> < SiTarget /> </Link></h3></td>
+        <td> 
+          <h3 className ="d-flex justify-content-evenly"> 
+            <AiFillEdit />  
+            <Link to={`/questions/${question.id}/delete`}>
+              <AiFillDelete />
+            </Link>
+          </h3>
+        </td>
+        
+      </tr>
+   
+    )
+    }
+
+    export const QuestionsTable = () => {
+      const {
+        data: questions,
+        isLoading,
+        isSuccess,
+        isError,
+        error
+      } = useGetQuestionsQuery()
+    
+      let content
+    
+      if (isLoading) {
+        content = <tr><td><Spinner text="Loading..." /></td></tr>
+      } else if (isSuccess) {
+        content = questions._embedded.questionModelList.map(question => <PostExcerpt key={question.id} question={question} />)
+      } else if (isError) {
+        content = <tr><td>{error.toString()}</td></tr>
+      }
+
+
+  
     return(
-      <Card className = "w-75 bg-primary border border-white m-5 mb-2 p-0">
+      <Card className = "w-100 bg-primary border border-white m-5 mb-2 p-0">
 
         <Card.Header className="bg-light"> Questions Table  </Card.Header>
         <Card.Body className="d-flex justify-content-center 
@@ -44,45 +91,20 @@ function QuestionsTable(){
 
         <Row className="justify-content-center"> 
           <Table  striped bordered hover 
-            size="sm" className="table-danger w-100">
+            size="sm" className="table-dark w-100">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Topic</th> 
                 <th>Source</th> 
                 <th>SourceLink</th> 
+                <th>Question:</th>
                 <th className = 'col-3'>Show</th>
                 <th className = 'col-3'>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Java</td>
-                <td>W3.org Java Tutorial</td>
-                <td > <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly">< SiTarget /> </h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
-                
-              </tr>
-              <tr>
-                <td>2</td>
-              <td>Java</td>
-                <td> W3 org Java Tutorial </td>
-                <td> <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> < SiTarget /> </h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
-                
-              </tr>
-              <tr>
-                <td>3</td>
-              <td>Java</td>
-                <td>W3.org Java Tutorial</td>
-                <td> <h3><a href="https://www.w3org.com/java"><AiOutlineLink /></a></h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> < SiTarget /> </h3></td>
-                <td> <h3 className ="d-flex justify-content-evenly"> <AiFillEdit /> <AiFillDelete /></h3></td>
-
-              </tr>
+              { content }
             </tbody>
              
               </Table> 
@@ -105,7 +127,4 @@ function QuestionsTable(){
         </Card>
 
     )
-
-}
-
-export default QuestionsTable;
+    }
