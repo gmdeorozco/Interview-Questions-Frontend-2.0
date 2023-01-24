@@ -1,14 +1,10 @@
 import { Card, Container, ListGroup, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useParams } from "react-router-dom";
-
-
-
+import { useNavigate, useParams } from "react-router-dom";
 
 function QuestionDeleteConfirm(){
   let { id } = useParams();
-
-
+  const navigate = useNavigate();
 
   return (
     <Card className = "w-75 border border-white m-5 mb-2 p-0">
@@ -59,7 +55,7 @@ function QuestionDeleteConfirm(){
               <Col className="d-flex justify-content-center">
               
                   <Button className = "btn btn-success"
-                    //onClick={goBack} 
+                    onClick={ () => navigate(-1) } 
                   > NO </Button>
                   <Button className = "btn btn-danger"> YES </Button>
                   
