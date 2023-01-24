@@ -1,43 +1,59 @@
 import React from 'react';
-import { Router,Route,Switch, Redirect } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
-
 import { Header, NavBar } from './headers';
 import { NewQuestionForm, QuestionDeleteConfirm, QuestionsTable, QuestionView } from './questions';
 import { NewSourceForm, SourcesTable } from './sources';
 import { NewTopicForm, TopicsTable } from './topics'
-
 import 'bootswatch/dist/darkly/bootstrap.min.css';
 
 
 function App() {
 
-  const newHistory = createBrowserHistory();
-  console.log("printing")
+  console.log("printing App..")
 
   return (
-    <Router history={newHistory} >
-      
+          
       <Container className="shadow shadow-3">
         <Header />
         <NavBar />
-        <Switch >
+
+      
+
+        <Routes >
+
+       
+        <Route 
+          exact path={"/questions"} 
+          element={
+            <React.Fragment>
+              <Row className="d-flex justify-content-center">
+                <NewQuestionForm />
+              </Row>
+              
+              <Row className="d-flex justify-content-center">
+                <QuestionsTable />
+              </Row>
+            </React.Fragment>
+            }>
+                  
+
+            </Route>
+
           <Route
-            exact
             path="/topics"
-            render={() => (
+            element={
               <React.Fragment  >
                 <Container >
                   <Row className="d-flex justify-content-center"><NewTopicForm /></Row> 
                   <Row className="d-flex justify-content-center"><TopicsTable /></Row> 
                 </Container>
               </React.Fragment>
-            )}
+            }
           />
          
-          <Route exact path="/sources" 
-            render={() => (
+          <Route path="/sources" 
+            element={
               <React.Fragment>
                 <Container >
                   <Row className="d-flex justify-content-center">
@@ -48,44 +64,38 @@ function App() {
                   </Row>
                 </Container>
               </React.Fragment>
-            )}
+            }
           />
-           
-          <Route exact path="/questions" 
-            render={() => (
-              <React.Fragment>
-              <Row className="d-flex justify-content-center">
-                <NewQuestionForm />
-              </Row>
-              <Row className="d-flex justify-content-center">
-                <QuestionsTable />
-              </Row>
-              </React.Fragment>
-            )}
-          />
-
-          <Route exact path="/questions/:id"
-            render={() => (
-              <React.Fragment>
-                <Row className="d-flex justify-content-center">
-                  <QuestionView />
-                </Row>
-              </React.Fragment>
-            )} />
+ 
           
-          <Route exact path="/questions/:id/delete"
-            render={() => (
+          
+          <Route path="/questions/:id/delete"
+            element={
               <React.Fragment>
                 <Row className="d-flex justify-content-center">
                   <QuestionDeleteConfirm />
                 </Row>
               </React.Fragment>
-            )} />
+            } />
+
+            <Route exact path="/questions/:id"
+              element={
+              <React.Fragment>
+                <Row className="d-flex justify-content-center">
+                  <QuestionView />
+                </Row>
+              </React.Fragment>
+                    } />
+          
+          <Route
+            path="*"
+            element={<Navigate to="/questions" replace />}
+          />
             
-          <Redirect to="/questions" />
-        </Switch>
+        
+        </Routes>
       </Container>
-    </Router>
+
   );
 }
 
