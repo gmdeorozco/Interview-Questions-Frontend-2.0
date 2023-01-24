@@ -1,5 +1,5 @@
 import { Button, Card, Col, Container, Row, ListGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { BsBackspaceFill } from "react-icons/bs"
 import { MdModeEditOutline } from "react-icons/md"
 import { LinkContainer } from "react-router-bootstrap";
@@ -10,7 +10,7 @@ import React from "react";
 function QuestionView(){
     
   let { id } = useParams();
-
+  const navigate = useNavigate();
 
 
   return(
@@ -54,7 +54,9 @@ function QuestionView(){
         <Row >
           <Col className="d-flex justify-content-end">
             
-            <Button className = "btn btn-warning"> <BsBackspaceFill />  Back </Button>
+            <Button className = "btn btn-warning"
+              onClick={ () => navigate(-1) } > 
+            <BsBackspaceFill />  Back </Button>
             <Button className = "btn btn-warning"> <MdModeEditOutline />  Edit </Button>
             <LinkContainer to={`/questions/${id}/delete`} >
               <Button className = "btn btn-danger"> <AiFillDelete />  Delete </Button>
