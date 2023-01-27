@@ -10,20 +10,34 @@ import { useGetQuestionQuery } from "../api/questionsSlice";
 import React from "react";
 
 export const QuestionView = ( { match }) => {
-    
+    //
  
-  const { questionId } = match.params;
-  const { data: data, isFetching, isSuccess } = useGetQuestionQuery( questionId );
+  const { questionId } = useParams();
+  const navigate = useNavigate();
+
+  
+
+  const { data: data, isFetching, isSuccess, isError, error } = useGetQuestionQuery( questionId );
 
   let content
   if (isFetching) {
     content = <Spinner text="Loading..." />
   } else if (isSuccess) {
-      let question = data._embedded.questionModelList;
+      let question = data;
     content = (
+
+      <>
+      <Card.Header className="bg-light">  { question.question }  </Card.Header>
+      <Card.Body className="d-flex justify-content-center
+      p-5
+      ">
+      <Container>
+
       
       <Row>
-          <p className="bg-primary p-2 rounded rounded-2">{ question.question }</p>
+          <p className="bg-primary p-2 rounded rounded-2">
+            <pre>{ question.answer }</pre>
+          </p>
           
           <hr></hr>
           <ListGroup className="mb-3">
@@ -51,23 +65,6 @@ export const QuestionView = ( { match }) => {
 
           </ListGroup>
         </Row>
-
-    )
-  }
-  
-  const navigate = useNavigate();
-
-
-  return(
-    
-    <Card className = "w-75 border border-white m-5 mb-2 p-0">
-      <Card.Header className="bg-light">  What is Java?  </Card.Header>
-      <Card.Body className="d-flex justify-content-center
-      p-3
-      ">
-      <Container>
-
-        { content }
         <Row >
           <Col className="d-flex justify-content-end">
             
@@ -83,6 +80,17 @@ export const QuestionView = ( { match }) => {
         </Row>
       </Container>
       </Card.Body>
-      </Card>
+      </>
+
+    )
+  }
+
+
+
+  return(
+    
+  <Card className = "w-75 border border-white m-5 mb-2 p-0">
+    { content }
+  </Card>
     )
 }

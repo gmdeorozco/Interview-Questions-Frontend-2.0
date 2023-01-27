@@ -69,7 +69,7 @@ function App() {
  
           
           
-          <Route path="/questions/:id/delete"
+          <Route path="/questions/:questionId/delete"
             element={
               <React.Fragment>
                 <Row className="d-flex justify-content-center">
@@ -78,7 +78,7 @@ function App() {
               </React.Fragment>
             } />
 
-            <Route exact path="/questions/:id"
+            <Route exact path="/questions/:questionId"
               element={
               <React.Fragment>
                 <Row className="d-flex justify-content-center">

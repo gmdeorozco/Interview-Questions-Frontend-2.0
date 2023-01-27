@@ -1,13 +1,21 @@
-import { Card, Container, ListGroup, Button, Row, Col } from "react-bootstrap";
+import { Card, Container, ListGroup, Button, Row, Col, Spinner } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { useGetQuestionQuery } from "../api/questionsSlice";
 
 function QuestionDeleteConfirm(){
-  let { id } = useParams();
+  const { questionId } = useParams();
   const navigate = useNavigate();
+  const { data: question, isFetching, isSuccess, isError, error } = useGetQuestionQuery( questionId );
+  let content;
 
-  return (
-    <Card className = "w-75 border border-white m-5 mb-2 p-0">
+  if( isFetching ){
+    content = <Spinner text="Loading..." />
+  } else if ( isError ){
+    content =  error.toString() 
+  } else {
+    console.log("defined content")
+    content = (<>
       <Card.Header className="bg-light">  Comfirmation  </Card.Header>
         <Card.Body className="d-flex justify-content-center
           p-3
@@ -15,18 +23,18 @@ function QuestionDeleteConfirm(){
           <Container>
 
             <Row className="d-flex justify-content-center">
-              <h3>Are you sure you want to delete question id { id }?</h3>
+              <h3>Delete question id # { question.id }?</h3>
               
               <hr></hr>
               <ListGroup className="mb-3" >
                 <ListGroup.Item >
-                    Question id : { id } 
+                    Question id : { question.id }  
                 </ListGroup.Item>
 
                 <ListGroup.Item >
                 <LinkContainer to="/topics"  > 
                   <Button className="btn btn-outline-light" >  
-                    Topic : Java 
+                    Topic : { question.topic }
                     </Button>
                 </LinkContainer>
                 </ListGroup.Item>
@@ -34,15 +42,15 @@ function QuestionDeleteConfirm(){
                   <ListGroup.Item >
                   <LinkContainer to="/sources"  > 
                       <Button className="btn btn-outline-light" >  
-                      Source : W3.org Java Tutorial 
+                        { question.source.name }
                       </Button>
                   </LinkContainer>
                   </ListGroup.Item>
 
                   <ListGroup.Item >
-                    <LinkContainer to={`/questions/${id}`}  > 
+                    <LinkContainer to={`/questions/${ questionId }`}  > 
                       <Button className="btn btn-outline-light" >  
-                      Question : What is Java?
+                      Question : { question.question }
                       </Button>
                     </LinkContainer>
                   </ListGroup.Item>
@@ -63,6 +71,12 @@ function QuestionDeleteConfirm(){
               </Row>
           </Container>
           </Card.Body>
+          </>)
+  }
+
+  return (
+    <Card className = "w-75 border border-white m-5 mb-2 p-0">
+      { content }
     </Card>
     )
 }

@@ -12,18 +12,16 @@ import { Link } from "react-router-dom";
      
       <tr>
         <td>{ question.id }</td>
-        <td>{ question.topic }</td>
-        <td>{ question.source.name }</td>
-        <td > <h3><a href={ question.source.sourceLink }><AiOutlineLink /></a></h3></td>
-        <td > <b>{ question.question }</b></td>
-        <td> <h3 className ="d-flex justify-content-evenly"> <Link to={ `/questions/${question.id}` }> < SiTarget /> </Link></h3></td>
+        <td><small>{ question.topic } / <a href={ question.source.sourceLink }>{ question.source.name }</a></small></td>
+        <td className="lead"> <b>{ question.question }</b></td>
+        <td> <h4 className ="d-flex justify-content-evenly"> <Link to={ `/questions/${question.id}` }> < SiTarget /> </Link></h4></td>
         <td> 
-          <h3 className ="d-flex justify-content-evenly"> 
+          <h4 className ="d-flex justify-content-evenly"> 
             <AiFillEdit />  
             <Link to={`/questions/${question.id}/delete`}>
               <AiFillDelete />
             </Link>
-          </h3>
+          </h4>
         </td>
         
       </tr>
@@ -45,7 +43,10 @@ import { Link } from "react-router-dom";
       if (isLoading) {
         content = <tr><td><Spinner text="Loading..." /></td></tr>
       } else if (isSuccess) {
-        content = questions._embedded.questionModelList.map(question => <PostExcerpt key={question.id} question={question} />)
+
+        content = questions._embedded.questionModelList
+          .map(question => <PostExcerpt key={question.id} question={question} />)
+
       } else if (isError) {
         content = <tr><td>{error.toString()}</td></tr>
       }
@@ -95,12 +96,10 @@ import { Link } from "react-router-dom";
             <thead>
               <tr>
                 <th>#</th>
-                <th>Topic</th> 
-                <th>Source</th> 
-                <th>SourceLink</th> 
-                <th>Question:</th>
-                <th className = 'col-3'>Show</th>
-                <th className = 'col-3'>Action</th>
+                <th>Topic / Source </th> 
+                <th className="col-6">Question:</th>
+                <th >Show</th>
+                <th >Action</th>
               </tr>
             </thead>
             <tbody>

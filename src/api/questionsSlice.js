@@ -19,5 +19,5 @@ export const questionsSlice = createApi({
   })
 })
 
-// Export the auto-generated hook for the `getPosts` query endpoint
+// Export the auto-generated hook for the `getPosts` query endpoint////
 export const { useGetQuestionsQuery, useGetQuestionQuery } = questionsSlice
