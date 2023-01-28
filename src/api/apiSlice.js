@@ -13,11 +13,17 @@ export const questionsSlice = createApi({
     getQuestions: builder.query({
       query: () => '/question/allpaginated'
     }),
+
     getQuestion: builder.query({
       query: questionId => `/question/${questionId}`
+    }),
+
+    getTopicNames: builder.query({
+      query: () => '/question/topics'
     })
+
   })
 })
 
 // Export the auto-generated hook for the `getPosts` query endpoint////
-export const { useGetQuestionsQuery, useGetQuestionQuery } = questionsSlice
+export const { useGetQuestionsQuery, useGetQuestionQuery, useGetTopicNamesQuery } = questionsSlice

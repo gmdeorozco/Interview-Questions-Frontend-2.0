@@ -1,7 +1,7 @@
 import { Card, Container, ListGroup, Button, Row, Col, Spinner } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetQuestionQuery } from "../api/questionsSlice";
+import { useGetQuestionQuery } from "../api/apiSlice";
 
 function QuestionDeleteConfirm(){
   const { questionId } = useParams();

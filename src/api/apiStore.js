@@ -1,5 +1,6 @@
-import { questionsSlice } from './questionsSlice'
+import { questionsSlice } from './apiSlice'
 import { configureStore } from '@reduxjs/toolkit'
+
 
 export default configureStore({
   reducer: {

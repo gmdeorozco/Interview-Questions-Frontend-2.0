@@ -3,7 +3,7 @@ import { AiFillEdit, AiFillDelete, AiOutlineLink } from "react-icons/ai"
 import { SiTarget } from "react-icons/si"
 import { TopicsListSelect } from "../topics";
 import { SourcesListSelect } from "../sources"
-import { useGetQuestionsQuery } from "../api/questionsSlice";
+import { useGetQuestionsQuery } from "../api/apiSlice";
 import { Link } from "react-router-dom";
 
   let PostExcerpt = ({ question }) => {

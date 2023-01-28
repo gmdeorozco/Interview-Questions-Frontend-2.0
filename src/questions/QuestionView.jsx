@@ -4,7 +4,7 @@ import { BsBackspaceFill } from "react-icons/bs"
 import { MdModeEditOutline } from "react-icons/md"
 import { LinkContainer } from "react-router-bootstrap";
 import { AiFillDelete } from "react-icons/ai"
-import { useGetQuestionQuery } from "../api/questionsSlice";
+import { useGetQuestionQuery } from "../api/apiSlice";
 
 
 import React from "react";
